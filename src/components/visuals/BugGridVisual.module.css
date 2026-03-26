@@ -1,0 +1,110 @@
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 160px 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid var(--sand);
+  margin-bottom: 4px;
+  opacity: 0;
+}
+
+:global(.active) .header {
+  animation: fade-in 0.3s var(--ease-out-expo) 0.15s both;
+}
+
+.headerCell {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 160px 1fr 1fr;
+  gap: 20px;
+  padding: 11px 0;
+  border-bottom: 1px solid oklch(0.93 0.01 75);
+  opacity: 0;
+}
+
+:global(.active) .row {
+  animation: row-in 0.4s var(--ease-out-expo) both;
+  animation-delay: calc(0.35s + var(--ri, 0) * 0.3s);
+}
+
+.bugName {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink);
+  align-self: center;
+}
+
+.other {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.x {
+  color: var(--bad);
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.rustFix {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  color: var(--sienna);
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  opacity: 0;
+}
+
+:global(.active) .row .rustFix {
+  animation: slide-right 0.3s var(--ease-out-expo) both;
+  animation-delay: calc(0.55s + var(--ri, 0) * 0.3s);
+}
+
+.check {
+  color: var(--sage);
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .header, .row { grid-template-columns: 1fr; gap: 4px; }
+  .header { display: none; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes row-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-right {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}

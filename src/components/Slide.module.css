@@ -1,0 +1,60 @@
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(40px, 5vh, 72px) clamp(36px, 5vw, 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out-expo);
+}
+
+.slide::before,
+.slide::after {
+  content: '';
+  flex: 1 0 0px;
+}
+
+.slide > * {
+  opacity: 0;
+  transform: translateY(14px) translateZ(0);
+  flex-shrink: 0;
+}
+
+/* ─── Active ─── */
+.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.active > * {
+  animation: stagger-in 0.45s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger-interval));
+}
+
+.active::before,
+.active::after {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(14px) translateZ(0); }
+  to { opacity: 1; transform: translateY(0) translateZ(0); }
+}
+
+/* ─── Exit ─── */
+.exitUp { opacity: 0; }
+.exitDown { opacity: 0; }
+
+/* ─── Title variant ─── */
+.title {
+  justify-content: flex-end;
+  padding-bottom: clamp(var(--space-3xl), 12vh, 140px);
+}
+
+.title::before { display: none; }
+.title::after { display: none; }

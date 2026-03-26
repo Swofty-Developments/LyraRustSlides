@@ -1,0 +1,39 @@
+:root {
+  --cream: oklch(0.96 0.015 75);
+  --ivory: oklch(0.93 0.012 75);
+  --sand: oklch(0.88 0.02 75);
+  --sienna: oklch(0.35 0.05 55);
+  --sienna-light: oklch(0.45 0.04 55);
+  --rust: oklch(0.58 0.16 45);
+  --rust-dim: oklch(0.52 0.12 45);
+  --terracotta: oklch(0.65 0.14 50);
+  --sage: oklch(0.55 0.08 155);
+  --sage-light: oklch(0.92 0.03 155);
+  --ink: oklch(0.22 0.03 55);
+  --ink-soft: oklch(0.40 0.03 55);
+  --code-bg: oklch(0.94 0.008 75);
+  --bad-bg: oklch(0.94 0.04 25);
+  --bad: oklch(0.50 0.16 25);
+  --kw: oklch(0.45 0.08 300);
+  --fn-color: oklch(0.42 0.10 250);
+  --str: oklch(0.55 0.08 155);
+  --tp: oklch(0.52 0.12 45);
+  --num: oklch(0.50 0.12 70);
+  --ts-label: oklch(0.50 0.10 250);
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'Berkeley Mono', 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 56px;
+  --space-3xl: 80px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --stagger-interval: 45ms;
+}

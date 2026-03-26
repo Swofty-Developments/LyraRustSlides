@@ -1,0 +1,121 @@
+.wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
+}
+
+.scope {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.braceOpen, .braceClose {
+  color: var(--ink-soft);
+  font-size: 1.3em;
+  opacity: 0;
+}
+
+:global(.active) .braceOpen {
+  animation: fade-in 0.3s var(--ease-out-expo) 0.3s both;
+}
+
+:global(.active) .braceClose {
+  animation: fade-in 0.3s var(--ease-out-expo) 1.6s both;
+}
+
+.inner {
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.binding {
+  opacity: 0;
+}
+
+:global(.active) .binding {
+  animation: slide-in 0.4s var(--ease-out-expo) 0.5s both;
+}
+
+.kw { color: var(--kw); }
+.var { color: var(--ink); }
+.eq { color: var(--ink-soft); }
+.val { color: var(--fn-color); }
+.dim { color: var(--ink-soft); }
+
+.value {
+  opacity: 0;
+}
+
+:global(.active) .value {
+  animation: slide-in 0.4s var(--ease-out-expo) 0.8s both;
+}
+
+.box {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--ivory);
+  border: 1.5px solid var(--sand);
+  border-left: 3px solid var(--rust);
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+
+.boxLabel {
+  color: var(--ink);
+  font-weight: 500;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+}
+
+.boxOwner {
+  color: var(--rust-dim);
+  font-size: 0.72rem;
+}
+
+.usage {
+  opacity: 0;
+}
+
+:global(.active) .usage {
+  animation: slide-in 0.4s var(--ease-out-expo) 1.1s both;
+}
+
+.dropZone {
+  margin-top: 6px;
+  padding-left: 24px;
+  opacity: 0;
+}
+
+:global(.active) .dropZone {
+  animation: drop-in 0.5s var(--ease-out-expo) 2s both;
+}
+
+.dropLabel {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--rust);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes drop-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

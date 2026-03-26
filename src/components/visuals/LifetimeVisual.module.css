@@ -1,0 +1,156 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 620px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+}
+
+:global(.active) .row:nth-child(1) { animation: slide-in 0.4s var(--ease-out-expo) 0.25s both; }
+:global(.active) .row:nth-child(2) { animation: slide-in 0.4s var(--ease-out-expo) 0.65s both; }
+:global(.active) .row:nth-child(3) { animation: slide-in 0.4s var(--ease-out-expo) 1.0s both; }
+:global(.active) .row:nth-child(4) { animation: slide-in 0.4s var(--ease-out-expo) 1.4s both; }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink);
+  min-width: 48px;
+  text-align: right;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.labelBad {
+  composes: label;
+  color: var(--bad);
+}
+
+/* Shared track — bars position inside this via left/width percentages */
+.track {
+  position: relative;
+  height: 28px;
+  flex: 1;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* data: spans full track width */
+:global(.active) .barData {
+  animation: grow-bar 0.6s var(--ease-out-expo) 0.35s both;
+  background: var(--sand);
+  left: 0;
+  width: 100%;
+}
+
+/* first &data: starts at 8%, ends at 58% — well within data's lifetime */
+:global(.active) .barRef1 {
+  animation: grow-bar 0.6s var(--ease-out-expo) 0.75s both;
+  background: oklch(0.90 0.04 155);
+  left: 8%;
+  width: 50%;
+}
+
+/* second &data: starts at 25%, ends at 72% — also within data's lifetime */
+:global(.active) .barRef2 {
+  animation: grow-bar 0.6s var(--ease-out-expo) 1.1s both;
+  background: oklch(0.90 0.04 155);
+  left: 25%;
+  width: 47%;
+}
+
+/* bad &data: starts at 15%, ends at 125% — extends PAST data's lifetime */
+:global(.active) .barBad {
+  animation: grow-bar 0.6s var(--ease-out-expo) 1.5s both;
+  background: oklch(0.92 0.06 25);
+  border: 1.5px dashed oklch(0.60 0.16 25);
+  left: 15%;
+  width: 110%;
+}
+
+/* Vertical line showing where data dies */
+.deathLine {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 100%;
+  width: 1.5px;
+  background: var(--bad);
+  opacity: 0;
+}
+
+:global(.active) .deathLine {
+  animation: fade-in 0.3s var(--ease-out-expo) 1.8s both;
+}
+
+.tickL, .tickR {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.tickBad {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  color: var(--bad);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.footnote {
+  opacity: 0;
+  padding-left: 62px;
+  margin-top: 2px;
+}
+
+:global(.active) .footnote:nth-child(5) { animation: slide-in 0.4s var(--ease-out-expo) 1.9s both; }
+:global(.active) .footnote:nth-child(6) { animation: slide-in 0.4s var(--ease-out-expo) 2.2s both; }
+
+.ok {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--sage);
+}
+
+.bad {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--bad);
+}
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes grow-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
