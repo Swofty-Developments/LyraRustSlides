@@ -6,25 +6,28 @@ fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
     if a.len() > b.len() { a } else { b }
 }`
 
-const MULTI_CODE = `// Two lifetimes — the references can live different lengths
+const MULTI_CODE = `// Two lifetimes — tracked independently
 struct Parser<'input, 'config> {
-    source: &'input str,       // borrowed from input
-    delimiter: &'config str,   // borrowed from config
+    source: &'input str,
+    delimiter: &'config str,
 }
 
-// 'input and 'config are independent —
-// the input can be short-lived even if
-// the config lives for the whole program.
+// The struct is valid as long as BOTH are alive.
+// If either dies, the struct is invalid.
+// But the compiler tracks them separately — so
+// they don't need to have the same scope.
 
-fn parse<'i, 'c>(
-    source: &'i str,
-    config: &'c Config,
-) -> Parser<'i, 'c> {
-    Parser {
-        source,
-        delimiter: &config.delimiter,
-    }
-}`
+let config = load_config();       // lives a long time
+
+{
+    let input = read_file();      // lives briefly
+    let p = Parser {
+        source: &input,
+        delimiter: &config.delim,
+    };
+    // p valid here — both alive
+}
+// p gone — input died, so parser can't survive`
 
 export function MultipleLifetimesSlide() {
   return (
@@ -37,8 +40,8 @@ export function MultipleLifetimesSlide() {
         There's nothing special about <code>'a</code> — it's just a convention, like
         naming a variable <code>i</code> in a loop. When a type borrows from multiple
         independent sources, you give each source its own lifetime: <code>'a</code>, <code>'b</code>, <code>'input</code>, <code>'config</code> — whatever
-        makes the relationship clear. Each lifetime tracks a separate "how long does this
-        reference need to stay valid?" contract.
+        makes the relationship clear. Each lifetime tracks a separate contract —
+        and the struct is only valid as long as <em>all</em> of its lifetimes are still alive.
       </Annotation>
       <Gap size="md" />
       <CodePair>
