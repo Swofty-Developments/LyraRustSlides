@@ -6,28 +6,26 @@ fn longest<'a>(a: &'a str, b: &'a str) -> &'a str {
     if a.len() > b.len() { a } else { b }
 }`
 
-const MULTI_CODE = `// Two lifetimes — tracked independently
-struct Parser<'input, 'config> {
-    source: &'input str,
-    delimiter: &'config str,
+const MULTI_CODE = `// Two lifetimes — compiler knows which one matters
+fn pick<'a, 'b>(a: &'a str, b: &'b str) -> &'a str {
+    a  // result only depends on 'a
 }
 
-// The struct is valid as long as BOTH are alive.
-// If either dies, the struct is invalid.
-// But the compiler tracks them separately — so
-// they don't need to have the same scope.
-
-let config = load_config();       // lives a long time
+let result;
+let a = String::from("hello");
 
 {
-    let input = read_file();      // lives briefly
-    let p = Parser {
-        source: &input,
-        delimiter: &config.delim,
-    };
-    // p valid here — both alive
+    let b = String::from("world");
+    result = pick(&a, &b);
+    // b is about to die — but that's fine,
+    // compiler knows result came from a, not b
 }
-// p gone — input died, so parser can't survive`
+
+println!("{result}"); // ✓ works — a is still alive
+
+// With pick<'a>(a: &'a str, b: &'a str) this
+// would FAIL — compiler would assume result
+// might depend on b, which is already dead.`
 
 export function MultipleLifetimesSlide() {
   return (
@@ -40,8 +38,9 @@ export function MultipleLifetimesSlide() {
         There's nothing special about <code>'a</code> — it's just a convention, like
         naming a variable <code>i</code> in a loop. When a type borrows from multiple
         independent sources, you give each source its own lifetime: <code>'a</code>, <code>'b</code>, <code>'input</code>, <code>'config</code> — whatever
-        makes the relationship clear. Each lifetime tracks a separate contract —
-        and the struct is only valid as long as <em>all</em> of its lifetimes are still alive.
+        makes the relationship clear. Separate lifetimes give the compiler more
+        information — so it knows exactly which references the result depends on,
+        and which ones can safely die early.
       </Annotation>
       <Gap size="md" />
       <CodePair>
