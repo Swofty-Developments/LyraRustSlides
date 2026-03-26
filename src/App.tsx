@@ -2,6 +2,7 @@ import { Deck } from './components/Deck'
 import {
   TitleSlide,
   PremiseSlide,
+  DarkModeSlide,
   HandlerComparisonSlide,
   OwnershipSlide,
   BorrowingSlide,
@@ -18,6 +19,7 @@ import {
 const slides = [
   { component: TitleSlide, variant: 'title' as const },
   { component: PremiseSlide },
+  { component: DarkModeSlide },
   { component: HandlerComparisonSlide },
   { component: OwnershipSlide },
   { component: BorrowingSlide },

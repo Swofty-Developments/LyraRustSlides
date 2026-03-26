@@ -1,5 +1,6 @@
 export { TitleSlide } from './01_Title'
 export { PremiseSlide } from './02_Premise'
+export { DarkModeSlide } from './02b_DarkMode'
 export { HandlerComparisonSlide } from './03_HandlerComparison'
 export { OwnershipSlide } from './05_Ownership'
 export { BorrowingSlide } from './06_Borrowing'

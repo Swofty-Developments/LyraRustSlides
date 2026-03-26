@@ -20,12 +20,14 @@ body {
   font-weight: 400;
   line-height: 1.55;
   overflow: hidden;
+  transition: background 0.8s ease, color 0.8s ease;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 400;
   color: var(--ink);
+  transition: color 0.8s ease;
 }
 
 h1 {
