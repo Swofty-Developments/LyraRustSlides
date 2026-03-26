@@ -36,7 +36,7 @@ export function OwnershipSlide() {
         This pattern is called RAII: Resource Acquisition Is Initialization.
       </Annotation>
       <Gap size="md" />
-      <Code lang="rust" code={SCOPE_CODE} />
+      <Code lang="rs">{SCOPE_CODE}</Code>
       <Gap size="sm" />
       <Annotation>
         Notice the inner block: <code>db</code> is created inside a subscope and dropped when
