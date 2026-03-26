@@ -64,7 +64,7 @@
 /* first &data: starts at 8%, ends at 58% — well within data's lifetime */
 :global(.active) .barRef1 {
   animation: grow-bar 0.6s var(--ease-out-expo) 0.75s both;
-  background: oklch(0.90 0.04 155);
+  background: var(--sage-light);
   left: 8%;
   width: 50%;
 }
@@ -72,7 +72,7 @@
 /* second &data: starts at 25%, ends at 72% — also within data's lifetime */
 :global(.active) .barRef2 {
   animation: grow-bar 0.6s var(--ease-out-expo) 1.1s both;
-  background: oklch(0.90 0.04 155);
+  background: var(--sage-light);
   left: 25%;
   width: 47%;
 }
@@ -80,8 +80,8 @@
 /* bad &data: starts at 15%, ends at 125% — extends PAST data's lifetime */
 :global(.active) .barBad {
   animation: grow-bar 0.6s var(--ease-out-expo) 1.5s both;
-  background: oklch(0.92 0.06 25);
-  border: 1.5px dashed oklch(0.60 0.16 25);
+  background: var(--bad-bg);
+  border: 1.5px dashed var(--bad);
   left: 15%;
   width: 110%;
 }

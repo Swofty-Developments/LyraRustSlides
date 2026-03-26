@@ -39,20 +39,23 @@
 }
 
 :root.dark {
-  --cream: oklch(0.16 0.015 260);
-  --ivory: oklch(0.20 0.012 260);
-  --sand: oklch(0.25 0.02 260);
-  --sienna: oklch(0.75 0.04 55);
-  --sienna-light: oklch(0.65 0.04 55);
-  --ink: oklch(0.92 0.02 75);
-  --ink-soft: oklch(0.70 0.03 55);
-  --code-bg: oklch(0.20 0.01 260);
-  --bad-bg: oklch(0.20 0.04 25);
-  --bad: oklch(0.65 0.16 25);
-  --kw: oklch(0.70 0.12 300);
-  --fn-color: oklch(0.68 0.12 250);
-  --str: oklch(0.70 0.10 155);
-  --tp: oklch(0.70 0.12 45);
-  --num: oklch(0.70 0.12 70);
-  --ts-label: oklch(0.65 0.10 250);
+  --cream: oklch(0.14 0.02 155);
+  --ivory: oklch(0.18 0.018 155);
+  --sand: oklch(0.28 0.02 155);
+  --sienna: oklch(0.80 0.03 155);
+  --sienna-light: oklch(0.70 0.03 155);
+  --ink: oklch(0.93 0.02 155);
+  --ink-soft: oklch(0.72 0.03 155);
+  --code-bg: oklch(0.17 0.015 155);
+  --bad-bg: oklch(0.22 0.05 25);
+  --bad: oklch(0.70 0.18 25);
+  --kw: oklch(0.75 0.12 300);
+  --fn-color: oklch(0.72 0.12 250);
+  --str: oklch(0.72 0.10 155);
+  --tp: oklch(0.74 0.12 45);
+  --num: oklch(0.72 0.12 70);
+  --ts-label: oklch(0.70 0.10 250);
+  --sage: oklch(0.72 0.10 155);
+  --sage-light: oklch(0.25 0.03 155);
+  --rust: oklch(0.68 0.16 45);
 }

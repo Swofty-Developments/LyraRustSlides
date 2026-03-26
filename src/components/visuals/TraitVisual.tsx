@@ -5,7 +5,10 @@ export function TraitVisual() {
     <div className={styles.wrap}>
       {/* Inheritance side */}
       <div className={styles.side}>
-        <div className={styles.sideLabel}>Inheritance</div>
+        <div className={styles.sideLabel}>
+          Inheritance
+          <div className={styles.strikethrough} />
+        </div>
         <div className={styles.tree}>
           <div className={styles.node}>Animal</div>
           <div className={styles.branch}>
@@ -22,7 +25,6 @@ export function TraitVisual() {
             </div>
           </div>
         </div>
-        <div className={styles.strikethrough} />
       </div>
 
       {/* Composition side */}

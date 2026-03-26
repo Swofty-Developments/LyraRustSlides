@@ -59,8 +59,8 @@
   animation-delay: calc(1.15s + var(--si, 0) * 0.2s);
 }
 
-.step { background: oklch(0.96 0.01 75); }
-.stepRust { background: oklch(0.96 0.01 75); }
+.step { background: var(--ivory); }
+.stepRust { background: var(--ivory); }
 
 .fn { color: var(--ink); font-weight: 500; }
 
@@ -101,7 +101,7 @@
 
 .handled {
   padding: 8px 12px;
-  background: oklch(0.94 0.03 155);
+  background: var(--sage-light);
   border-radius: 2px;
   font-family: var(--font-body);
   font-size: 0.72rem;

@@ -26,6 +26,8 @@
   letter-spacing: 0.08em;
   color: var(--ink-soft);
   margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
 }
 
 /* Inheritance tree */
@@ -73,13 +75,13 @@
 
 .strikethrough {
   position: absolute;
-  top: 30px;
-  left: 0;
-  right: 0;
-  height: 2px;
+  top: 8px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 2.5px;
   background: oklch(0.50 0.16 25);
   transform-origin: left;
-  transform: scaleX(0) rotate(-8deg);
+  transform: scaleX(0);
 }
 
 :global(.active) .strikethrough {
@@ -142,6 +144,6 @@
 }
 
 @keyframes strike {
-  from { transform: scaleX(0) rotate(-8deg); }
-  to { transform: scaleX(1) rotate(-8deg); }
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
